@@ -1,9 +1,5 @@
 FROM eclipse-temurin:21
 
-RUN mkdir /app
-
-COPY app.jar /app/app.jar
-
-WORKDIR /app
+COPY app.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
