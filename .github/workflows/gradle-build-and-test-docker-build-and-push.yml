@@ -31,7 +31,7 @@ jobs:
       - name: Copy jar file
         run: mv build/libs/perfectify-backend.jar app.jar
       # Upload it as artifact to use in docker build
-      - uses: actions/upload-artifact@master
+      - uses: actions/upload-artifact@v4
         with:
           name: jar-file
           path: app.jar
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@master
+      - uses: actions/download-artifact@v4
         with:
           name: jar-file
           path: app.jar
