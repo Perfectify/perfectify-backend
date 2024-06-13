@@ -51,8 +51,11 @@ jobs:
         with:
           images: ghcr.io/${{ env.IMAGE_NAME }}
 
-      - name: Debug
-        run: ls
+      - name: List Files
+        id: list-files
+        uses: mirko-felice/list-files-action@v3.0.5
+        with:
+          path: "."
 
       # Building and publishing the docker image
       - name: Build and push docker image
