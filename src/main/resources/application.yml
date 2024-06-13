@@ -1,0 +1,17 @@
+app:
+  datasource:
+    perfectify:
+      maximum-pool-size: 5
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/perfectify?currentSchema=perfectify,public&user=${DB_USER:postgres}&password=${DB_PASSWORD:postgres}
+spring:
+  liquibase:
+    change-log: db/liquibase-changelog.xml
+    default-schema: perfectify
+    liquibase-schema: public
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://securetoken.google.com/perfectify-test
+          jwk-set-uri: https://www.googleapis.com/robot/v1/metadata/jwk/securetoken@system.gserviceaccount.com
