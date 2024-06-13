@@ -64,4 +64,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/alystor/perfectify-backend:${{ env.DATE }}
+          tags: alystor/perfectify-backend:${{ env.DATE }}
