@@ -65,3 +65,10 @@ jobs:
           context: .
           push: true
           tags: alystor/perfectify-backend:latest
+
+      - name: Trigger deployment
+        uses: satak/webrequest-action@master
+        with:
+          url: ${{ secrets.WEBHOOK_URL }}
+          headers: '{"Authentication": "Bearer ${{ env.WEBHOOK_ACCESS_TOKEN }}"}'
+          method: GET
