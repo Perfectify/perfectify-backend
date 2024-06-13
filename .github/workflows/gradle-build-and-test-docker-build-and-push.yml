@@ -1,15 +1,35 @@
-name: Build a docker image of the application and push it to the github registry
+name: Build and test the application with gradle and build and push a docker image from it
 
 on:
-  workflow_run:
-    workflows: [ "Build and test the application with gradle" ]
-    types: [ "completed" ]
+  push:
+    branches: [ "master", "dev" ]
 
 env:
   IMAGE_NAME: alystor/perfectify
 
 jobs:
-  build:
+  build_gradle:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      # Pull the git repository
+      - uses: actions/checkout@v4
+      # Download and install Java
+      - name: Set up Java Development Kit 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      # Setting up gradle
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5
+      # Build the project
+      - name: Build the application with gradle
+        run: ./gradlew build
+
+  build_docker_file_and_push:
+    needs: [ "build_gradle" ]
     runs-on: ubuntu-latest
     steps:
       # Setting up docker buildx
