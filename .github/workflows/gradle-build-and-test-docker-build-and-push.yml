@@ -40,7 +40,6 @@ jobs:
     needs: [ "build_gradle" ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/download-artifact@v4
         with:
           name: jar-file
