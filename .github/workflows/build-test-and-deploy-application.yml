@@ -70,4 +70,4 @@ jobs:
         run: |
           curl --request GET \
           --url ${{ secrets.WEBHOOK_URL }} \
-          --header 'authorization: Bearer ${{ secrets.WEBHOOK_ACCESS_TOKEN }}' \
+          --H "authorization: Bearer ${{ secrets.WEBHOOK_ACCESS_TOKEN }}" \
