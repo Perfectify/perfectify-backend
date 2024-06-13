@@ -12,7 +12,7 @@ services:
   #    - "perfectify-database:/var/lib/postgresql/data:rw"
   #Perfectify Backend
   web:
-    image: ghcr.io/alystor/perfectify-backend:latest
+    image: alystor/perfectify-backend:latest
     restart: always
 #volumes:
 #  perfectify-database:
