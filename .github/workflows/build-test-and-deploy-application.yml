@@ -70,5 +70,5 @@ jobs:
         uses: satak/webrequest-action@master
         with:
           url: ${{ secrets.WEBHOOK_URL }}
-          headers: "{ 'Authentication: Bearer ${{ env.WEBHOOK_ACCESS_TOKEN }}' }"
+          headers: '{ "Authentication": "Bearer ${{ env.WEBHOOK_ACCESS_TOKEN }}" }'
           method: GET
