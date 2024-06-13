@@ -14,5 +14,7 @@ services:
   web:
     image: alystor/perfectify-backend:latest
     restart: always
+    ports:
+      - "8080:8080"
 #volumes:
 #  perfectify-database:
