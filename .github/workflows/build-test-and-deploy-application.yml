@@ -69,6 +69,6 @@ jobs:
       - name: "Trigger deployment"
         uses: indiesdev/curl@v1.1
         with:
-          url: ${{ env.WEBHOOK_URL }}
+          url: ${{ secrets.WEBHOOK_URL }}
           method: "GET"
-          headers: '{ "Authorization": "Beaer ${{ env.WEBHOOK_ACCESS_TOKEN }}" }'
+          headers: '{ "Authorization": "Beaer ${{ secrets.WEBHOOK_ACCESS_TOKEN }}" }'
