@@ -66,8 +66,9 @@ jobs:
           push: true
           tags: alystor/perfectify-backend:latest
 
-      - name: Trigger deployment
-        run: |
-          curl --request GET \
-          --url ${{ secrets.WEBHOOK_URL }} \
-          --H "authorization: Bearer ${{ secrets.WEBHOOK_ACCESS_TOKEN }}" \
+      - name: "Trigger deployment"
+        uses: indiesdev/curl@v1.1
+        with:
+          url: ${{ env.WEBHOOK_URL }}
+          method: "GET"
+          headers: '{ "Authorization": "Beaer ${{ env.WEBHOOK_ACCESS_TOKEN }}" }'
