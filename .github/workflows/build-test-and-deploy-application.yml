@@ -71,4 +71,4 @@ jobs:
         with:
           url: ${{ secrets.WEBHOOK_URL }}
           method: "GET"
-          headers: '{ "Authorization": "Beaer ${{ secrets.WEBHOOK_ACCESS_TOKEN }}" }'
+          headers: '{ "Authorization": "Bearer ${{ secrets.WEBHOOK_ACCESS_TOKEN }}" }'
