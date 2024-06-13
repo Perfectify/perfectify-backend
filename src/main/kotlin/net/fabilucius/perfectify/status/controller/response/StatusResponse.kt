@@ -6,5 +6,4 @@ import java.time.ZonedDateTime
 data class StatusResponse(
     val authenticatedUser: AuthenticatedUser,
     val timestamp: ZonedDateTime = ZonedDateTime.now(),
-    val test: String = "ALELELE",
 )
