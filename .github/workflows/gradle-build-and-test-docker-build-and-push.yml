@@ -27,11 +27,25 @@ jobs:
       # Build the project
       - name: Build the application with gradle
         run: ./gradlew build
+      # Copy the jar file
+      - name: Copy jar file
+        run: mv build/libs/perfectify-backend.jar app.jar
+      # Upload it as artifact to use in docker build
+      - uses: actions/upload-artifact@master
+        with:
+          name: jar-file
+          path: app.jar
 
   build_docker_file_and_push:
     needs: [ "build_gradle" ]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@master
+        with:
+          name: jar-file
+          path: app.jar
+
       # Setting up docker buildx
       - name: Set up docker buildx
         id: buildx
@@ -63,6 +77,7 @@ jobs:
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: .
+          file:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
