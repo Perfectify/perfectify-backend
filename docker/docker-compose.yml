@@ -1,0 +1,20 @@
+services:
+  # Postgres Database
+  #db:
+  #  network_mode: host
+  #  image: postgres
+  #  restart: always
+  #  environment:
+  #    POSTGRES_USER: admin
+  #    POSTGRES_PASSWORD: admin
+  #    POSTGRES_DB: perfectify
+  #  volumes:
+  #    - "perfectify-database:/var/lib/postgresql/data:rw"
+  #Perfectify Backend
+  web:
+    image: alystor/perfectify-backend:latest
+    restart: always
+    ports:
+      - "8123:8080"
+#volumes:
+#  perfectify-database:
